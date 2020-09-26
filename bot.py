@@ -3,9 +3,10 @@ import discord
 from discord.ext import commands
 import asyncio
 
+import time
+
 #Your Discord Bots Token goes here. You can individually put it in every time you need it, but this alos works
 TOKEN = ''
-
    
 #Your going to start all of your commands with this
 bot = commands.Bot(command_prefix="`")
@@ -16,23 +17,59 @@ bot = commands.Bot(command_prefix="`")
 
 @bot.event
 async def on_voice_state_update(member, before, after):
-    x = before
-    y = after
-    print(x)
-    print('_______________________---')
-    print(y)
-    print("Ahhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
+    original = before.channel
+    endstate = after.channel
+    print(original) 
+    print('_______________________')
+    #print(endstate)
 
-#@bot.event
-#async def on_voice_state_update(member, before, after):
-    #if before.channel is None and after.channel is not None:
-        #if after.channel.id == [481263163753496590]:
-            #await member.guild.system_channel.send("Alarm!")
+    endstatestr = str(endstate)
+    originalstr = str(original)
+    x = bot.get_channel(481268259203842049)
+    channel = bot.get_channel(758371983947333733)
+    nogo_channel = bot.get_channel(481268259203842049)
+    general = bot.get_channel(481263163753496590)
 
-@bot.command()
-async def ping(ctx):
-    await ctx.send('pong')
+    print(originalstr)
+
+    mem2 = str(member)
+
     
+    Channelmax = 2
+    htp = 0
+    time.sleep(1)
+
+    if endstatestr == ('QueRoom'):
+        print('Initate Move')   
+        yuh = []
+        for (i) in x.members:
+            yuh.append(i)
+    
+            Current = (len(yuh))
+            htp = int(Current)
+
+        if htp < Channelmax:
+            await member.move_to(x)
+            #print(htp) 
+        else:
+            print("Room Full")
+            await channel.send('Room Full. Try again Later')
+            await member.move_to(general)
+
+    elif originalstr == ('Lobby'):
+        print('left')
+        #print(mk3)
+
+        
+            
+
+
+
+
+
+
+
+   
 ###########################################
 @bot.command()
 async def showe(ctx):
@@ -83,30 +120,20 @@ async def Gen1(ctx, member: discord.Member):
 
 @bot.command()
 async def team(ctx):
-    vc = ctx.guild.get_channel(481263163753496590)
+    vc = ctx.guild.get_channel(481268259203842049)
     yuh = []
 
     for (i) in vc.members:
         yuh.append(i)
     
-    print(yuh)
+    #print(yuh)
     Current = (len(yuh))
+    await ctx.send(Current)
 
     ChannelMax=2
 
-    if Current > ChannelMax:    
-        await ctx.send("A SACRIFICE MUST BE MADE")
-    else:
-        await ctx.send("Actually go fuck yourself")
-        
+      
 
-
-
-    #while x > 50000:
-        #print('false')
-        
-    #print(vc.members)
- 
 
 #Runs the Bot       
 bot.run(TOKEN)
