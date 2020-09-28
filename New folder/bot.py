@@ -6,7 +6,7 @@ import asyncio
 import time
 
 #Your Discord Bots Token goes here. You can individually put it in every time you need it, but this alos works
-TOKEN = 'NzU4MzY4NjQxMzE3MjA4MTU0.X2t71Q.tZ197zgE8ZfS5X6bVLu7Whi-XoA'
+TOKEN = ''
    
 #Your going to start all of your commands with this
 bot = commands.Bot(command_prefix="`")
@@ -131,10 +131,11 @@ async def test(ctx, arg):
 async def join(ctx):
     channel = ctx.author.voice.channel
     await channel.connect()
+
+    
 @bot.command()
 async def leave(ctx):
     await ctx.voice_client.disconnect()
-
 
 ###########################################
 @bot.command()
@@ -148,34 +149,15 @@ async def grab(ctx):
 
     
 @bot.command()
-async def general(ctx, member: discord.Member):
+async def resolve(ctx, member: discord.Member):
     #print(ctx.author.voice.channel.id)
-    x = bot.get_channel(481263163753496590)
+    #x = bot.get_channel(758379379365118054)
+
+    role = member.guild.get_role(759898325796651078)
+
+    await member.remove_roles(role)
     
-    await member.move_to(x)
-@bot.command()
-async def Gen1(ctx, member: discord.Member):
-    #print(ctx.author.voice.channel.id)
-    x = bot.get_channel(758379379365118054)
-    
-    await member.move_to(x)
-
-
-@bot.command()
-async def team(ctx):
-    vc = ctx.guild.get_channel(481268259203842049)
-    yuh = []
-
-    for (i) in vc.members:
-        yuh.append(i)
-    
-    #print(yuh)
-    Current = (len(yuh))
-    await ctx.send(Current)
-
-    ChannelMax=2
-
-      
+    #await member.move_to(x)
 
 
 #Runs the Bot       

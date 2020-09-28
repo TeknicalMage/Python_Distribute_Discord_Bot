@@ -27,26 +27,26 @@ async def on_voice_state_update(member, before, after):
 
     originalstr = str(original)
     
-    Lobby = bot.get_channel(759658109433544725)
+    Lobby = bot.get_channel(481268259203842049)
 
-    Lobby2 = bot.get_channel(759658603442339871)
+    Lobby2 = bot.get_channel(759639142572359710)
 
-    Lobby3 = bot.get_channel(759658627090087967)
+    Lobby3 = bot.get_channel(759643368761720842)
 
-    Lobby4 = bot.get_channel(759658645180645386)
+    Lobby4 = bot.get_channel(759650829048872991)
 
-    Lobby5 = bot.get_channel(759658667154604123)
+    Lobby5 = bot.get_channel(759653397610627092)
 
-    channel = bot.get_channel(759659065382666262)
+    channel = bot.get_channel(758371983947333733)
     
-    general = bot.get_channel(759657204184907801)
+    general = bot.get_channel(481263163753496590)
 
     print(originalstr)
 
     #mem2 = str(member)
 
     
-    Channelmax = 10
+    Channelmax = 1
     htpi = 0
     htpj = 0
     htpk = 0
@@ -131,7 +131,6 @@ async def test(ctx, arg):
 async def join(ctx):
     channel = ctx.author.voice.channel
     await channel.connect()
-
 @bot.command()
 async def leave(ctx):
     await ctx.voice_client.disconnect()
@@ -154,7 +153,6 @@ async def general(ctx, member: discord.Member):
     x = bot.get_channel(481263163753496590)
     
     await member.move_to(x)
-
 @bot.command()
 async def Gen1(ctx, member: discord.Member):
     #print(ctx.author.voice.channel.id)
@@ -164,8 +162,8 @@ async def Gen1(ctx, member: discord.Member):
 
 
 @bot.command()
-async def channel_check(ctx):
-    vc = ctx.guild.get_channel(759657204184907801)
+async def team(ctx):
+    vc = ctx.guild.get_channel(481268259203842049)
     yuh = []
 
     for (i) in vc.members:
@@ -175,7 +173,9 @@ async def channel_check(ctx):
     Current = (len(yuh))
     await ctx.send(Current)
 
-        
+    ChannelMax=2
+
+      
 
 
 #Runs the Bot       
