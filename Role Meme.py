@@ -6,7 +6,8 @@ import asyncio
 import time
 
 #Your Discord Bots Token goes here. You can individually put it in every time you need it, but this alos works
-TOKEN = 'NzU5ODc4NDU2NDg1NDc4NDQx.X3D59Q.p6v8YLfbj4IZlaxPMYynjXuLcog'
+TOKEN = ''
+#Role
    
 #Your going to start all of your commands with this
 bot = commands.Bot(command_prefix="/")
